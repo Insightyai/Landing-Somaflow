@@ -68,6 +68,17 @@
       text-transform: uppercase;
     }
 
+    .label::before {
+      content: '';
+      display: inline-block;
+      width: 24px;
+      height: 1px;
+      background: currentColor;
+      vertical-align: middle;
+      margin-right: 10px;
+      opacity: 0.6;
+    }
+
     .container {
       max-width: 1200px;
       margin: 0 auto;
@@ -146,6 +157,67 @@
       }
     }
 
+    /* Wave Dividers */
+    .wave-divider {
+      line-height: 0;
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+    }
+    .wave-divider svg {
+      display: block;
+      width: 100%;
+      height: 80px;
+    }
+
+    /* Grain Texture Overlay */
+    #hero::before,
+    #que-es::before,
+    #precio::before,
+    #cta::before,
+    #footer::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 256px 256px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Hero Blobs */
+    .hero-blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+      z-index: 0;
+      animation: blobFloat 12s ease-in-out infinite alternate;
+    }
+    @keyframes blobFloat {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(20px, -30px) scale(1.05); }
+    }
+
+    /* Scroll Indicator */
+    .scroll-indicator {
+      display: flex;
+      justify-content: center;
+      margin-top: 48px;
+    }
+    .scroll-line {
+      width: 1px;
+      height: 48px;
+      background: linear-gradient(to bottom, var(--teal), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.3; transform: scaleY(1); }
+      50% { opacity: 1; transform: scaleY(0.7); }
+    }
+
     /* NAV */
     #nav {
       position: fixed;
@@ -218,7 +290,7 @@
     /* HERO */
     #hero {
       background: var(--noche);
-      padding: 160px 24px 120px;
+      padding: 160px 24px 80px;
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -233,7 +305,7 @@
       max-width: 760px;
       margin: 0 auto;
       position: relative;
-      z-index: 1;
+      z-index: 2;
     }
 
     .hero-pill {
@@ -270,7 +342,8 @@
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
       font-weight: 300;
-      font-size: 72px;
+      font-size: 86px;
+      letter-spacing: -0.02em;
       color: var(--crema);
       line-height: 1.15;
       opacity: 0;
@@ -283,7 +356,8 @@
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
       font-weight: 300;
-      font-size: 72px;
+      font-size: 86px;
+      letter-spacing: -0.02em;
       color: var(--teal);
       line-height: 1.15;
       margin-top: 4px;
@@ -343,10 +417,10 @@
 
     @media (max-width: 768px) {
       #hero {
-        padding: 120px 24px 80px;
+        padding: 120px 24px 60px;
       }
       .h1-main, .h1-sub {
-        font-size: 44px;
+        font-size: 48px;
       }
       .hero-tagline {
         font-size: 20px;
@@ -356,7 +430,7 @@
     /* PARA QUIEN */
     #para-quien {
       background: var(--salvia);
-      padding: 120px 24px;
+      padding: 80px 24px;
     }
 
     .para-quien-content {
@@ -433,7 +507,7 @@
     /* TEST */
     #test {
       background: var(--crema);
-      padding: 120px 24px;
+      padding: 80px 24px;
     }
 
     .test-header {
@@ -831,7 +905,13 @@
     /* QUE ES */
     #que-es {
       background: var(--noche);
-      padding: 120px 24px;
+      padding: 80px 24px;
+      position: relative;
+    }
+
+    #que-es > * {
+      position: relative;
+      z-index: 1;
     }
 
     .que-es-content {
@@ -948,7 +1028,7 @@
     /* PROGRAMA */
     #programa {
       background: var(--bosque);
-      padding: 120px 24px;
+      padding: 80px 24px;
     }
 
     .programa-header {
@@ -986,16 +1066,31 @@
     }
 
     .fase-card {
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(200, 221, 214, 0.15);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(200,221,214,0.12);
       border-radius: 20px;
       padding: 36px;
-      transition: all 0.3s ease;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      transition: transform 0.35s ease, background 0.35s ease, box-shadow 0.35s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .fase-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(95,164,132,0.4), transparent);
     }
 
     .fase-card:hover {
-      transform: translateY(-6px);
-      background: rgba(255, 255, 255, 0.09);
+      transform: translateY(-8px);
+      background: rgba(255,255,255,0.07);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
     }
 
     .fase-number {
@@ -1043,7 +1138,7 @@
     /* INCLUYE */
     #incluye {
       background: var(--salvia);
-      padding: 120px 24px;
+      padding: 80px 24px;
     }
 
     .incluye-header {
@@ -1079,6 +1174,18 @@
       backdrop-filter: blur(4px);
       -webkit-backdrop-filter: blur(4px);
       transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .beneficio-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 20%;
+      right: 20%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(95,164,132,0.5), transparent);
+      border-radius: 2px;
     }
 
     .beneficio-card:hover {
@@ -1139,9 +1246,17 @@
 
     /* PRECIO */
     #precio {
-      background: var(--noche);
-      background-image: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(95, 164, 132, 0.12) 0%, transparent 70%);
-      padding: 120px 24px;
+      background:
+        radial-gradient(ellipse 50% 60% at 50% 50%, rgba(95,164,132,0.14) 0%, transparent 70%),
+        radial-gradient(ellipse 80% 40% at 20% 80%, rgba(65,100,100,0.12) 0%, transparent 60%),
+        var(--noche);
+      padding: 80px 24px;
+      position: relative;
+    }
+
+    #precio > * {
+      position: relative;
+      z-index: 1;
     }
 
     .precio-header {
@@ -1270,7 +1385,9 @@
     /* SILVIA */
     #silvia {
       background: var(--bosque);
-      padding: 120px 24px;
+      background-image: radial-gradient(circle, rgba(200,221,214,0.07) 1px, transparent 1px);
+      background-size: 32px 32px;
+      padding: 80px 24px;
     }
 
     .silvia-content {
@@ -1358,7 +1475,7 @@
     /* FAQ */
     #faq {
       background: var(--crema);
-      padding: 120px 24px;
+      padding: 80px 24px;
     }
 
     .faq-content {
@@ -1454,8 +1571,14 @@
     /* CTA FINAL */
     #cta {
       background: linear-gradient(160deg, var(--bosque) 0%, var(--noche) 100%);
-      padding: 160px 24px;
+      padding: 120px 24px;
       text-align: center;
+      position: relative;
+    }
+
+    #cta > * {
+      position: relative;
+      z-index: 1;
     }
 
     .cta-content {
@@ -1514,6 +1637,12 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: relative;
+    }
+
+    #footer > * {
+      position: relative;
+      z-index: 1;
     }
 
     .footer-left {
@@ -1555,6 +1684,10 @@
   <main>
     <!-- HERO -->
     <section id="hero">
+      <!-- Blobs decorativos -->
+      <div class="hero-blob" style="width:400px;height:300px;top:10%;left:5%;background:rgba(95,164,132,0.08);animation-delay:0s;"></div>
+      <div class="hero-blob" style="width:300px;height:400px;top:30%;right:8%;background:rgba(65,100,100,0.10);animation-delay:-4s;"></div>
+      <div class="hero-blob" style="width:250px;height:250px;bottom:15%;left:40%;background:rgba(185,193,143,0.06);animation-delay:-8s;"></div>
       <div id="hero-us-wrapper" style="position:absolute;top:0;left:0;right:0;bottom:-48%;z-index:0;pointer-events:none;opacity:0;">
         <div style="position:absolute;inset:0;opacity:0.7;mix-blend-mode:screen;">
           <div data-us-project="0bj47BRhqOMrgLlpMNC0" data-us-dpi="1.5" data-us-fps="60" data-us-lazyload="false"
@@ -1575,8 +1708,18 @@
           <a href="#precio" class="btn-primary">Quiero empezar &rarr;</a>
         </div>
         <p class="hero-subtext">Acceso inmediato &middot; A tu ritmo &middot; Sin compromiso</p>
+        <div class="scroll-indicator" aria-hidden="true">
+          <div class="scroll-line"></div>
+        </div>
       </div>
     </section>
+
+    <!-- Wave: Hero (Noche) -> Para quién (Salvia) -->
+    <div class="wave-divider wave-down" style="background: var(--salvia);">
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+        <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#2A3A34"/>
+      </svg>
+    </div>
 
     <!-- PARA QUIEN -->
     <section id="para-quien">
@@ -1620,6 +1763,13 @@
       </div>
     </section>
 
+    <!-- Wave: Para quién (Salvia) -> Test (Crema) -->
+    <div class="wave-divider wave-down" style="background: var(--crema);">
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+        <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#D9E5CD"/>
+      </svg>
+    </div>
+
     <!-- TEST -->
     <section id="test">
       <div class="test-header reveal">
@@ -1646,6 +1796,13 @@
         </div>
       </div>
     </section>
+
+    <!-- Wave: Test (Crema) -> Qué es (Noche) -->
+    <div class="wave-divider wave-up" style="background: var(--crema);">
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+        <path d="M0,0 L1440,0 L1440,40 C1080,0 360,80 0,40 Z" fill="#2A3A34"/>
+      </svg>
+    </div>
 
     <!-- QUE ES -->
     <section id="que-es">
@@ -1709,6 +1866,13 @@
       </div>
     </section>
 
+    <!-- Wave: Qué es (Noche) -> Programa (Bosque) -->
+    <div class="wave-divider wave-down" style="background: var(--bosque);">
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+        <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#2A3A34"/>
+      </svg>
+    </div>
+
     <!-- PROGRAMA -->
     <section id="programa">
       <div class="programa-header">
@@ -1743,6 +1907,13 @@
         </div>
       </div>
     </section>
+
+    <!-- Wave: Programa (Bosque) -> Incluye (Salvia) -->
+    <div class="wave-divider wave-down" style="background: var(--salvia);">
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+        <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#416464"/>
+      </svg>
+    </div>
 
     <!-- INCLUYE -->
     <section id="incluye">
@@ -1808,6 +1979,13 @@
       </div>
     </section>
 
+    <!-- Wave: Incluye (Salvia) -> Precio (Noche) -->
+    <div class="wave-divider wave-up" style="background: var(--salvia);">
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+        <path d="M0,0 L1440,0 L1440,40 C1080,0 360,80 0,40 Z" fill="#2A3A34"/>
+      </svg>
+    </div>
+
     <!-- PRECIO -->
     <section id="precio">
       <div class="precio-header">
@@ -1849,6 +2027,13 @@
       </div>
     </section>
 
+    <!-- Wave: Precio (Noche) -> Silvia (Bosque) -->
+    <div class="wave-divider wave-down" style="background: var(--bosque);">
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+        <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#2A3A34"/>
+      </svg>
+    </div>
+
     <!-- SILVIA -->
     <section id="silvia">
       <div class="silvia-content">
@@ -1867,6 +2052,13 @@
         </div>
       </div>
     </section>
+
+    <!-- Wave: Silvia (Bosque) -> FAQ (Crema) -->
+    <div class="wave-divider wave-down" style="background: var(--crema);">
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+        <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#416464"/>
+      </svg>
+    </div>
 
     <!-- FAQ -->
     <section id="faq">
@@ -1922,6 +2114,13 @@
         </div>
       </div>
     </section>
+
+    <!-- Wave: FAQ (Crema) -> CTA (Bosque->Noche) -->
+    <div class="wave-divider wave-up" style="background: var(--crema);">
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+        <path d="M0,0 L1440,0 L1440,40 C1080,0 360,80 0,40 Z" fill="#416464"/>
+      </svg>
+    </div>
 
     <!-- CTA FINAL -->
     <section id="cta">
