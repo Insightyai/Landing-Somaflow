@@ -1,0 +1,2320 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Somaflow - Programa de 30 días para regular tu sistema nervioso desde el cuerpo. Psicología somática y neurociencia del trauma con Silvia Diazgranados.">
+  <meta property="og:title" content="Somaflow - Regula desde el cuerpo">
+  <meta property="og:description" content="Un método de 30 días para que el cambio llegue donde realmente vive: en el cuerpo.">
+  <title>Somaflow - Regula desde el cuerpo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,300;1,400&family=Jost:wght@300;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --noche: #2A3A34;
+      --teal: #5FA484;
+      --salvia: #D9E5CD;
+      --bosque: #416464;
+      --crema: #F5F2EA;
+      --musgo: #7A8C85;
+      --arena: #EDE9DF;
+      --bruma: #C8DDD6;
+      --eucalipto: #8DA992;
+      --olive: #B9C18F;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 18px;
+      line-height: 1.65;
+      color: var(--noche);
+      background-color: var(--noche);
+    }
+
+    h1, h2, h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 300;
+      line-height: 1.15;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .label {
+      font-family: 'Jost', sans-serif;
+      font-weight: 500;
+      font-size: 12px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Animations */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+      50% {
+        opacity: 0.6;
+        transform: scale(1.1);
+      }
+    }
+
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes slideOutLeft {
+      from {
+        opacity: 1;
+        transform: translateX(0);
+      }
+      to {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    /* NAV */
+    #nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 64px;
+      background: rgba(42, 58, 52, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(200, 221, 214, 0.15);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+    }
+
+    .nav-left {
+      font-family: 'Jost', sans-serif;
+      font-weight: 500;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--musgo);
+    }
+
+    .nav-center {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 24px;
+      color: var(--crema);
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .nav-right .btn-pill {
+      background: var(--teal);
+      color: white;
+      padding: 10px 24px;
+      border-radius: 999px;
+      font-family: 'Jost', sans-serif;
+      font-weight: 500;
+      font-size: 14px;
+      cursor: pointer;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      border: none;
+      display: inline-block;
+    }
+
+    .nav-right .btn-pill:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(95, 164, 132, 0.3);
+    }
+
+    @media (max-width: 768px) {
+      #nav {
+        padding: 0 20px;
+      }
+      .nav-left {
+        display: none;
+      }
+      .nav-center {
+        position: static;
+        transform: none;
+      }
+    }
+
+    /* HERO */
+    #hero {
+      background: var(--noche);
+      padding: 160px 24px 120px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-content {
+      max-width: 760px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(95, 164, 132, 0.12);
+      border: 1px solid rgba(95, 164, 132, 0.3);
+      border-radius: 999px;
+      padding: 8px 20px;
+      font-family: 'Jost', sans-serif;
+      font-weight: 500;
+      font-size: 12px;
+      color: var(--teal);
+      letter-spacing: 0.08em;
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards;
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--teal);
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    .hero-title {
+      margin-top: 40px;
+    }
+
+    .h1-main {
+      display: block;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: 72px;
+      color: var(--crema);
+      line-height: 1.15;
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards;
+      animation-delay: 0.15s;
+    }
+
+    .h1-sub {
+      display: block;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: 72px;
+      color: var(--teal);
+      line-height: 1.15;
+      margin-top: 4px;
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards;
+      animation-delay: 0.25s;
+    }
+
+    .hero-tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 24px;
+      color: var(--musgo);
+      margin-top: 32px;
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards;
+      animation-delay: 0.35s;
+    }
+
+    .hero-cta {
+      margin-top: 40px;
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards;
+      animation-delay: 0.45s;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--teal);
+      color: white;
+      padding: 18px 48px;
+      border-radius: 999px;
+      font-family: 'Jost', sans-serif;
+      font-weight: 500;
+      font-size: 16px;
+      box-shadow: 0 8px 32px rgba(95, 164, 132, 0.35);
+      cursor: pointer;
+      border: none;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(95, 164, 132, 0.45);
+    }
+
+    .hero-subtext {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 13px;
+      color: var(--musgo);
+      margin-top: 16px;
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards;
+      animation-delay: 0.55s;
+    }
+
+    @media (max-width: 768px) {
+      #hero {
+        padding: 120px 24px 80px;
+      }
+      .h1-main, .h1-sub {
+        font-size: 44px;
+      }
+      .hero-tagline {
+        font-size: 20px;
+      }
+    }
+
+    /* PARA QUIEN */
+    #para-quien {
+      background: var(--salvia);
+      padding: 120px 24px;
+    }
+
+    .para-quien-content {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .para-quien-label {
+      color: var(--bosque);
+    }
+
+    .para-quien-blockquote {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 34px;
+      color: var(--bosque);
+      line-height: 1.3;
+      border-left: 3px solid var(--bosque);
+      padding-left: 32px;
+      margin: 48px 0;
+    }
+
+    .sintomas-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 48px;
+    }
+
+    .sintoma-card {
+      background: rgba(255, 255, 255, 0.45);
+      border-radius: 16px;
+      padding: 24px;
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+    }
+
+    .sintoma-icon {
+      width: 32px;
+      height: 32px;
+      color: var(--bosque);
+      margin-bottom: 12px;
+    }
+
+    .sintoma-title {
+      font-family: 'Jost', sans-serif;
+      font-weight: 500;
+      font-size: 16px;
+      color: var(--bosque);
+    }
+
+    .para-quien-cierre {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-style: italic;
+      font-size: 18px;
+      color: var(--bosque);
+      margin-top: 48px;
+    }
+
+    @media (max-width: 768px) {
+      .para-quien-blockquote {
+        font-size: 24px;
+        padding-left: 20px;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .sintomas-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* TEST */
+    #test {
+      background: var(--crema);
+      padding: 120px 24px;
+    }
+
+    .test-header {
+      text-align: center;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    .test-label {
+      color: var(--teal);
+      margin-bottom: 16px;
+    }
+
+    .test-title {
+      font-size: 40px;
+      color: var(--bosque);
+    }
+
+    .test-subtitle {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 17px;
+      color: var(--musgo);
+      margin-top: 16px;
+    }
+
+    .test-container {
+      max-width: 680px;
+      margin: 56px auto 0;
+    }
+
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .progress-label {
+      font-family: 'Jost', sans-serif;
+      font-weight: 500;
+      font-size: 12px;
+      color: var(--musgo);
+    }
+
+    .progress-bar {
+      height: 4px;
+      background: rgba(65, 100, 100, 0.15);
+      border-radius: 2px;
+      margin-bottom: 32px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--teal), var(--eucalipto));
+      border-radius: 2px;
+      transition: width 0.4s ease;
+    }
+
+    .test-card {
+      background: white;
+      border-radius: 28px;
+      padding: 40px;
+      box-shadow: 0 4px 24px rgba(42, 58, 52, 0.08);
+      min-height: 420px;
+    }
+
+    .question-container {
+      animation: slideInRight 0.4s ease;
+    }
+
+    .question-category {
+      font-family: 'Jost', sans-serif;
+      font-weight: 500;
+      font-size: 11px;
+      color: var(--teal);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .question-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 26px;
+      color: var(--bosque);
+      margin: 16px 0;
+    }
+
+    .question-context {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-style: italic;
+      font-size: 14px;
+      color: var(--musgo);
+      margin-bottom: 32px;
+    }
+
+    .options-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .option-btn {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      background: var(--arena);
+      border: 2px solid transparent;
+      border-radius: 12px;
+      padding: 16px 20px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-align: left;
+    }
+
+    .option-btn:hover {
+      background: var(--crema);
+      border-color: var(--bruma);
+    }
+
+    .option-btn.selected {
+      border-color: var(--teal);
+      background: rgba(95, 164, 132, 0.08);
+    }
+
+    .option-radio {
+      width: 20px;
+      height: 20px;
+      min-width: 20px;
+      border: 2px solid var(--bruma);
+      border-radius: 50%;
+      transition: all 0.2s ease;
+      margin-top: 2px;
+    }
+
+    .option-btn.selected .option-radio {
+      background: var(--teal);
+      border-color: var(--teal);
+    }
+
+    .option-text {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 15px;
+      color: var(--bosque);
+    }
+
+    .test-nav {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 24px;
+    }
+
+    .btn-back {
+      background: transparent;
+      border: 1px solid var(--bruma);
+      color: var(--musgo);
+      padding: 12px 28px;
+      border-radius: 999px;
+      font-family: 'Jost', sans-serif;
+      font-weight: 500;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-back:hover:not(:disabled) {
+      background: var(--crema);
+    }
+
+    .btn-back:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    .btn-next {
+      background: var(--bosque);
+      color: var(--crema);
+      padding: 12px 32px;
+      border-radius: 999px;
+      font-family: 'Jost', sans-serif;
+      font-weight: 500;
+      font-size: 14px;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s ease;
+    }
+
+    .btn-next:hover:not(:disabled) {
+      transform: translateY(-2px);
+    }
+
+    .btn-next:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+
+    /* Test Results */
+    .result-container {
+      animation: slideInRight 0.5s ease;
+    }
+
+    .result-ring {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 24px;
+      position: relative;
+    }
+
+    .result-ring svg {
+      width: 100%;
+      height: 100%;
+      transform: rotate(-90deg);
+    }
+
+    .result-ring-bg {
+      fill: none;
+      stroke: rgba(65, 100, 100, 0.15);
+      stroke-width: 8;
+    }
+
+    .result-ring-progress {
+      fill: none;
+      stroke: var(--teal);
+      stroke-width: 8;
+      stroke-linecap: round;
+      transition: stroke-dashoffset 1s ease;
+    }
+
+    .result-score {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 28px;
+      color: var(--bosque);
+    }
+
+    .result-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 30px;
+      color: var(--bosque);
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .result-description {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 16px;
+      color: var(--musgo);
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .insights-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    .insight-card {
+      background: var(--arena);
+      border-radius: 12px;
+      padding: 20px;
+    }
+
+    .insight-icon {
+      width: 24px;
+      height: 24px;
+      color: var(--teal);
+      margin-bottom: 8px;
+    }
+
+    .insight-title {
+      font-family: 'Jost', sans-serif;
+      font-weight: 500;
+      font-size: 14px;
+      color: var(--bosque);
+      margin-bottom: 4px;
+    }
+
+    .insight-text {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 13px;
+      color: var(--musgo);
+    }
+
+    .result-cta-box {
+      background: var(--bosque);
+      border-radius: 20px;
+      padding: 32px;
+      text-align: center;
+    }
+
+    .result-cta-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 24px;
+      color: var(--crema);
+      margin-bottom: 12px;
+    }
+
+    .result-cta-text {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 15px;
+      color: var(--bruma);
+      margin-bottom: 20px;
+    }
+
+    .result-cta-btn {
+      display: block;
+      width: 100%;
+      background: var(--teal);
+      color: white;
+      padding: 16px;
+      border-radius: 999px;
+      font-family: 'Jost', sans-serif;
+      font-weight: 500;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .result-cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(95, 164, 132, 0.3);
+    }
+
+    .result-guarantee {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 13px;
+      color: var(--musgo);
+      margin-top: 12px;
+    }
+
+    .result-retry {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 14px;
+      color: var(--musgo);
+      text-decoration: underline;
+      cursor: pointer;
+      margin-top: 20px;
+      display: inline-block;
+    }
+
+    .result-retry:hover {
+      color: var(--bosque);
+    }
+
+    .ethics-note {
+      background: rgba(95, 164, 132, 0.08);
+      border-left: 3px solid var(--teal);
+      padding: 16px;
+      margin-top: 24px;
+      text-align: left;
+    }
+
+    .ethics-note p {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 14px;
+      color: var(--bosque);
+    }
+
+    @media (max-width: 768px) {
+      .test-title {
+        font-size: 28px;
+      }
+      .question-text {
+        font-size: 22px;
+      }
+      .options-grid {
+        grid-template-columns: 1fr;
+      }
+      .insights-grid {
+        grid-template-columns: 1fr;
+      }
+      .test-card {
+        padding: 28px 20px;
+      }
+    }
+
+    /* QUE ES */
+    #que-es {
+      background: var(--noche);
+      padding: 120px 24px;
+    }
+
+    .que-es-content {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .que-es-label {
+      color: var(--olive);
+      margin-bottom: 16px;
+    }
+
+    .que-es-title {
+      font-size: 42px;
+      color: var(--crema);
+      margin-bottom: 24px;
+    }
+
+    .que-es-text {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 17px;
+      color: var(--musgo);
+      margin-bottom: 16px;
+    }
+
+    .que-es-panel {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(200, 221, 214, 0.15);
+      border-radius: 24px;
+      padding: 32px;
+    }
+
+    .panel-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 32px;
+      color: var(--crema);
+    }
+
+    .panel-label {
+      font-family: 'Jost', sans-serif;
+      font-weight: 500;
+      font-size: 11px;
+      color: var(--teal);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    .pilares-list {
+      margin-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .pilar-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .pilar-icon {
+      width: 40px;
+      height: 40px;
+      min-width: 40px;
+      background: rgba(95, 164, 132, 0.2);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .pilar-icon svg {
+      width: 20px;
+      height: 20px;
+      color: var(--teal);
+    }
+
+    .pilar-content {
+      flex: 1;
+    }
+
+    .pilar-title {
+      font-family: 'Jost', sans-serif;
+      font-weight: 500;
+      font-size: 15px;
+      color: var(--crema);
+    }
+
+    .pilar-text {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 14px;
+      color: var(--musgo);
+      margin-top: 4px;
+    }
+
+    @media (max-width: 900px) {
+      .que-es-content {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+      .que-es-title {
+        font-size: 32px;
+      }
+    }
+
+    /* PROGRAMA */
+    #programa {
+      background: var(--bosque);
+      padding: 120px 24px;
+    }
+
+    .programa-header {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .programa-label {
+      color: var(--olive);
+      margin-bottom: 16px;
+    }
+
+    .programa-title {
+      font-size: 44px;
+      color: var(--crema);
+    }
+
+    .programa-subtitle {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 17px;
+      color: var(--bruma);
+      margin-top: 16px;
+    }
+
+    .fases-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 64px;
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .fase-card {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(200, 221, 214, 0.15);
+      border-radius: 20px;
+      padding: 36px;
+      transition: all 0.3s ease;
+    }
+
+    .fase-card:hover {
+      transform: translateY(-6px);
+      background: rgba(255, 255, 255, 0.09);
+    }
+
+    .fase-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 80px;
+      color: rgba(95, 164, 132, 0.15);
+      line-height: 1;
+      margin-bottom: -20px;
+    }
+
+    .fase-range {
+      font-family: 'Jost', sans-serif;
+      font-weight: 500;
+      font-size: 11px;
+      color: var(--teal);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .fase-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 26px;
+      color: var(--crema);
+      margin: 12px 0;
+    }
+
+    .fase-description {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 15px;
+      color: var(--musgo);
+    }
+
+    @media (max-width: 900px) {
+      .fases-grid {
+        grid-template-columns: 1fr;
+      }
+      .programa-title {
+        font-size: 32px;
+      }
+    }
+
+    /* INCLUYE */
+    #incluye {
+      background: var(--salvia);
+      padding: 120px 24px;
+    }
+
+    .incluye-header {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .incluye-label {
+      color: var(--bosque);
+      margin-bottom: 16px;
+    }
+
+    .incluye-title {
+      font-size: 44px;
+      color: var(--bosque);
+    }
+
+    .beneficios-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 64px;
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .beneficio-card {
+      background: rgba(255, 255, 255, 0.4);
+      border-radius: 20px;
+      padding: 28px;
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      transition: all 0.3s ease;
+    }
+
+    .beneficio-card:hover {
+      transform: translateY(-4px);
+      background: rgba(255, 255, 255, 0.6);
+    }
+
+    .beneficio-icon-wrapper {
+      width: 48px;
+      height: 48px;
+      background: rgba(65, 100, 100, 0.12);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+    }
+
+    .beneficio-icon-wrapper svg {
+      width: 24px;
+      height: 24px;
+      color: var(--bosque);
+    }
+
+    .beneficio-title {
+      font-family: 'Jost', sans-serif;
+      font-weight: 500;
+      font-size: 16px;
+      color: var(--bosque);
+      margin-top: 16px;
+      text-align: center;
+    }
+
+    .beneficio-description {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 14px;
+      color: var(--bosque);
+      opacity: 0.75;
+      margin-top: 8px;
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      .beneficios-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .incluye-title {
+        font-size: 32px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .beneficios-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* PRECIO */
+    #precio {
+      background: var(--noche);
+      background-image: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(95, 164, 132, 0.12) 0%, transparent 70%);
+      padding: 120px 24px;
+    }
+
+    .precio-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .precio-label {
+      color: var(--olive);
+      margin-bottom: 16px;
+    }
+
+    .precio-title {
+      font-size: 44px;
+      color: var(--crema);
+    }
+
+    .precio-card {
+      max-width: 480px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(200, 221, 214, 0.2);
+      border-radius: 28px;
+      padding: 48px;
+      text-align: center;
+    }
+
+    .precio-badge {
+      display: inline-block;
+      background: var(--teal);
+      color: white;
+      font-family: 'Jost', sans-serif;
+      font-weight: 500;
+      font-size: 12px;
+      padding: 8px 20px;
+      border-radius: 999px;
+      margin-bottom: 24px;
+    }
+
+    .precio-amount {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 80px;
+      color: var(--crema);
+      line-height: 1;
+    }
+
+    .precio-amount sup {
+      font-size: 36px;
+      vertical-align: super;
+    }
+
+    .precio-note {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 14px;
+      color: var(--musgo);
+      margin-top: 8px;
+    }
+
+    .precio-features {
+      margin-top: 32px;
+      text-align: left;
+    }
+
+    .precio-feature {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .precio-check {
+      color: var(--teal);
+      font-family: 'Jost', sans-serif;
+      font-weight: 500;
+      font-size: 16px;
+    }
+
+    .precio-feature-text {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 15px;
+      color: var(--crema);
+    }
+
+    .precio-btn {
+      display: block;
+      width: 100%;
+      background: var(--teal);
+      color: white;
+      padding: 18px;
+      border-radius: 999px;
+      font-family: 'Jost', sans-serif;
+      font-weight: 500;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+      margin-top: 40px;
+      box-shadow: 0 8px 32px rgba(95, 164, 132, 0.3);
+      transition: all 0.25s ease;
+    }
+
+    .precio-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(95, 164, 132, 0.4);
+    }
+
+    .precio-guarantee {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 13px;
+      color: var(--musgo);
+      margin-top: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .precio-title {
+        font-size: 32px;
+      }
+      .precio-card {
+        padding: 32px 24px;
+      }
+    }
+
+    /* SILVIA */
+    #silvia {
+      background: var(--bosque);
+      padding: 120px 24px;
+    }
+
+    .silvia-content {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 380px 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .silvia-photo {
+      width: 380px;
+      height: 460px;
+      border-radius: 200px 200px 16px 16px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .silvia-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+
+    .silvia-photo-placeholder {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 14px;
+      color: var(--musgo);
+    }
+
+    .silvia-label {
+      color: var(--olive);
+      margin-bottom: 16px;
+    }
+
+    .silvia-title {
+      font-size: 42px;
+      color: var(--crema);
+      margin-bottom: 24px;
+    }
+
+    .silvia-text {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 17px;
+      color: var(--bruma);
+      margin-bottom: 16px;
+    }
+
+    .silvia-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Jost', sans-serif;
+      font-weight: 500;
+      font-size: 15px;
+      color: var(--teal);
+      margin-top: 32px;
+      transition: all 0.2s ease;
+    }
+
+    .silvia-link:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 900px) {
+      .silvia-content {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+      .silvia-photo {
+        width: 280px;
+        height: 340px;
+        margin: 0 auto;
+      }
+      .silvia-title {
+        font-size: 32px;
+      }
+    }
+
+    /* FAQ */
+    #faq {
+      background: var(--crema);
+      padding: 120px 24px;
+    }
+
+    .faq-content {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .faq-label {
+      color: var(--bosque);
+      margin-bottom: 16px;
+    }
+
+    .faq-title {
+      font-size: 42px;
+      color: var(--bosque);
+      margin-bottom: 48px;
+    }
+
+    .faq-accordion {
+      border-top: 1px solid rgba(65, 100, 100, 0.2);
+    }
+
+    .faq-item {
+      border-bottom: 1px solid rgba(65, 100, 100, 0.2);
+    }
+
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 0;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .faq-question:hover {
+      opacity: 0.8;
+    }
+
+    .faq-question:focus-visible {
+        outline: 2px solid #5FA484;
+        outline-offset: 4px;
+        border-radius: 4px;
+    }
+
+    .faq-question-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 22px;
+      color: var(--bosque);
+      flex: 1;
+      padding-right: 20px;
+    }
+
+    .faq-toggle {
+      font-family: 'Jost', sans-serif;
+      font-weight: 500;
+      font-size: 24px;
+      color: var(--teal);
+      transition: transform 0.3s ease;
+      width: 24px;
+      text-align: center;
+    }
+
+    .faq-item.open .faq-toggle {
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease-out;
+    }
+
+    .faq-answer-content {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 16px;
+      color: var(--bosque);
+      opacity: 0.8;
+      padding-bottom: 24px;
+    }
+
+    @media (max-width: 768px) {
+      .faq-title {
+        font-size: 32px;
+      }
+      .faq-question-text {
+        font-size: 20px;
+      }
+    }
+
+    /* CTA FINAL */
+    #cta {
+      background: linear-gradient(160deg, var(--bosque) 0%, var(--noche) 100%);
+      padding: 160px 24px;
+      text-align: center;
+    }
+
+    .cta-content {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .cta-title {
+      font-size: 48px;
+      color: var(--crema);
+      margin-bottom: 24px;
+    }
+
+    .cta-text {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 18px;
+      color: var(--musgo);
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background: var(--teal);
+      color: white;
+      padding: 20px 56px;
+      border-radius: 999px;
+      font-family: 'Jost', sans-serif;
+      font-weight: 500;
+      font-size: 17px;
+      margin-top: 48px;
+      box-shadow: 0 12px 40px rgba(95, 164, 132, 0.35);
+      cursor: pointer;
+      border: none;
+      transition: all 0.25s ease;
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 48px rgba(95, 164, 132, 0.45);
+    }
+
+    @media (max-width: 768px) {
+      #cta {
+        padding: 100px 24px;
+      }
+      .cta-title {
+        font-size: 32px;
+      }
+    }
+
+    /* FOOTER */
+    #footer {
+      background: var(--noche);
+      border-top: 1px solid rgba(200, 221, 214, 0.1);
+      padding: 32px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-left {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 13px;
+      color: var(--musgo);
+    }
+
+    .footer-right {
+      font-family: 'Jost', sans-serif;
+      font-weight: 500;
+      font-size: 13px;
+      color: var(--teal);
+    }
+
+    @media (max-width: 768px) {
+      #footer {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- NAV -->
+  <nav id="nav">
+    <div class="nav-left">
+      <span>&larr; Silvia Diazgranados</span>
+    </div>
+    <div class="nav-center">Somaflow</div>
+    <div class="nav-right">
+      <a href="#precio" class="btn-pill">Empezar &rarr;</a>
+    </div>
+  </nav>
+
+  <main>
+    <!-- HERO -->
+    <section id="hero">
+      <div id="hero-us-wrapper" style="position:absolute;top:0;left:0;right:0;bottom:-48%;z-index:0;pointer-events:none;opacity:0;">
+        <div style="position:absolute;inset:0;opacity:0.7;mix-blend-mode:screen;">
+          <div data-us-project="0bj47BRhqOMrgLlpMNC0" data-us-dpi="1.5" data-us-fps="60" data-us-lazyload="false"
+            data-us-production="true" style="position:absolute;inset:0;width:100%;height:100%;filter:hue-rotate(-62deg) saturate(1.5) brightness(1.1);"></div>
+        </div>
+      </div>
+      <div class="hero-content">
+        <div class="hero-pill">
+          <span class="pulse-dot"></span>
+          Programa de 30 días &middot; Disponible ahora
+        </div>
+        <h1 class="hero-title">
+          <span class="h1-main">Somaflow</span>
+          <span class="h1-sub">Regula desde el cuerpo.</span>
+        </h1>
+        <p class="hero-tagline">No desde la fuerza. No desde el control. Desde adentro.</p>
+        <div class="hero-cta">
+          <a href="#precio" class="btn-primary">Quiero empezar &rarr;</a>
+        </div>
+        <p class="hero-subtext">Acceso inmediato &middot; A tu ritmo &middot; Sin compromiso</p>
+      </div>
+    </section>
+
+    <!-- PARA QUIEN -->
+    <section id="para-quien">
+      <div class="para-quien-content">
+        <p class="label para-quien-label reveal">PARA TI, SI...</p>
+        <blockquote class="para-quien-blockquote reveal reveal-delay-1">
+          &ldquo;Ya se lo que tengo que hacer. Lo entiendo perfectamente. Pero mi cuerpo no me obedece.&rdquo;
+        </blockquote>
+        <div class="sintomas-grid">
+          <div class="sintoma-card reveal reveal-delay-1">
+            <svg class="sintoma-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M12 6v6l4 2"/>
+              <circle cx="12" cy="12" r="10"/>
+            </svg>
+            <p class="sintoma-title">Ansiedad que no cede aunque no pase nada concreto</p>
+          </div>
+          <div class="sintoma-card reveal reveal-delay-2">
+            <svg class="sintoma-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M18.364 5.636a9 9 0 11-12.728 0"/>
+              <path d="M12 9v4"/>
+              <circle cx="12" cy="17" r="1"/>
+            </svg>
+            <p class="sintoma-title">Agotamiento que el descanso no resuelve</p>
+          </div>
+          <div class="sintoma-card reveal reveal-delay-2">
+            <svg class="sintoma-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            </svg>
+            <p class="sintoma-title">Reacciones intensas que luego no entiendes</p>
+          </div>
+          <div class="sintoma-card reveal reveal-delay-3">
+            <svg class="sintoma-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+            </svg>
+            <p class="sintoma-title">Sensación de estar atrapado en el mismo patrón</p>
+          </div>
+        </div>
+        <p class="para-quien-cierre reveal">
+          Si te reconociste en algo de esto, no es falta de disciplina. No es falta de voluntad. Es que tu sistema nervioso aprendió a funcionar en modo de supervivencia &mdash; y nadie le ha enseñado todavía cómo salir.
+        </p>
+      </div>
+    </section>
+
+    <!-- TEST -->
+    <section id="test">
+      <div class="test-header reveal">
+        <p class="label test-label">TEST GRATUITO</p>
+        <h2 class="test-title">¿Cómo está respondiendo tu sistema nervioso ahora mismo?</h2>
+        <p class="test-subtitle">8 preguntas. Sin diagnóstico. Solo una imagen honesta de lo que tu cuerpo está viviendo &mdash; y hacia dónde necesitas ir.</p>
+      </div>
+      <div class="test-container reveal">
+        <div class="progress-header">
+          <span class="progress-label">Tu recorrido</span>
+          <span class="progress-label" id="progress-count">Pregunta 1 de 8</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progress-fill" style="width: 12.5%;"></div>
+        </div>
+        <div class="test-card">
+          <div id="test-content">
+            <!-- Questions will be rendered here by JS -->
+          </div>
+        </div>
+        <div class="test-nav" id="test-nav">
+          <button class="btn-back" id="btn-back" disabled>&larr; Anterior</button>
+          <button class="btn-next" id="btn-next" disabled>Siguiente &rarr;</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUE ES -->
+    <section id="que-es">
+      <div class="que-es-content">
+        <div class="que-es-left">
+          <p class="label que-es-label reveal">QUÉ ES SOMAFLOW</p>
+          <h2 class="que-es-title reveal reveal-delay-1">Un método para que el cambio llegue donde realmente vive &mdash; en el cuerpo.</h2>
+          <p class="que-es-text reveal reveal-delay-2">Somaflow es un programa de 30 días diseñado para regular el sistema nervioso desde la psicología somática y la neurociencia del trauma. No es meditación genérica. No es otra lista de consejos de bienestar.</p>
+          <p class="que-es-text reveal reveal-delay-3">Es un camino estructurado, semana a semana, para que tu cuerpo aprenda a salir del modo supervivencia y pueda encontrar un nuevo punto de base &mdash; uno que se sienta seguro.</p>
+        </div>
+        <div class="que-es-panel reveal reveal-delay-2">
+          <p class="panel-title">Somaflow</p>
+          <p class="panel-label">MÉTODO DE REGULACIÓN SOMÁTICA</p>
+          <div class="pilares-list">
+            <div class="pilar-item">
+              <div class="pilar-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                </svg>
+              </div>
+              <div class="pilar-content">
+                <p class="pilar-title">Neurociencia del trauma y nervio vago</p>
+                <p class="pilar-text">Trabajamos con el nervio vago &mdash; el gran regulador del sistema nervioso &mdash; como puerta de acceso a la calma real.</p>
+              </div>
+            </div>
+            <div class="pilar-item">
+              <div class="pilar-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                </svg>
+              </div>
+              <div class="pilar-content">
+                <p class="pilar-title">Prácticas somáticas guiadas</p>
+                <p class="pilar-text">Videos diseñados para cada fase del proceso</p>
+              </div>
+            </div>
+            <div class="pilar-item">
+              <div class="pilar-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                </svg>
+              </div>
+              <div class="pilar-content">
+                <p class="pilar-title">Sin fuerza de voluntad</p>
+                <p class="pilar-text">El cuerpo aprende por repetición, no por esfuerzo</p>
+              </div>
+            </div>
+            <div class="pilar-item">
+              <div class="pilar-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+              </div>
+              <div class="pilar-content">
+                <p class="pilar-title">10-20 min por día</p>
+                <p class="pilar-text">Diseñado para la vida real, no para las vacaciones</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROGRAMA -->
+    <section id="programa">
+      <div class="programa-header">
+        <p class="label programa-label reveal">EL PROGRAMA</p>
+        <h2 class="programa-title reveal reveal-delay-1">30 días. 4 semanas. Un camino hacia adentro.</h2>
+        <p class="programa-subtitle reveal reveal-delay-2">Cada semana tiene un propósito claro. Cada práctica está diseñada para donde estarás en ese momento.</p>
+      </div>
+      <div class="fases-grid">
+        <div class="fase-card reveal">
+          <p class="fase-number">01</p>
+          <p class="fase-range">Días 1-7</p>
+          <h3 class="fase-title">Donde estás tú, empieza el mapa</h3>
+          <p class="fase-description">Tu sistema nervioso tiene su propia historia. Antes de moverse, necesita saber que hay suelo. Esta fase parte de tu punto de partida real &mdash; no del ideal.</p>
+        </div>
+        <div class="fase-card reveal reveal-delay-1">
+          <p class="fase-number">02</p>
+          <p class="fase-range">Días 8-14</p>
+          <h3 class="fase-title">Aprender el idioma de tu cuerpo</h3>
+          <p class="fase-description">Tu cuerpo lleva tiempo hablando &mdash; en tensión, en agotamiento, en reacciones que no entiendes. Esta fase te enseña a escucharlo sin miedo y sin apresurarte a cambiarlo.</p>
+        </div>
+        <div class="fase-card reveal reveal-delay-2">
+          <p class="fase-number">03</p>
+          <p class="fase-range">Días 15-22</p>
+          <h3 class="fase-title">Lo que tu sistema nervioso necesita soltar</h3>
+          <p class="fase-description">La regulación no ocurre pensando &mdash; ocurre moviéndose, vibrando, soltando lo que el cuerpo acumuló. Esta fase activa los recursos que ya están en ti.</p>
+        </div>
+        <div class="fase-card reveal reveal-delay-3">
+          <p class="fase-number">04</p>
+          <p class="fase-range">Días 23-30</p>
+          <h3 class="fase-title">Un nuevo punto de base &mdash; el tuyo</h3>
+          <p class="fase-description">No buscamos el mismo punto de base para todos. Esta fase te ayuda a construir el ritmo de regulación que puede sostenerse en tu vida real, con tu historia y tu cuerpo.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- INCLUYE -->
+    <section id="incluye">
+      <div class="incluye-header">
+        <p class="label incluye-label reveal">QUE INCLUYE</p>
+        <h2 class="incluye-title reveal reveal-delay-1">Todo lo que necesitas para empezar y sostener el proceso</h2>
+      </div>
+      <div class="beneficios-grid">
+        <div class="beneficio-card reveal">
+          <div class="beneficio-icon-wrapper">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+            </svg>
+          </div>
+          <h3 class="beneficio-title">30 videos de práctica</h3>
+          <p class="beneficio-description">Cada día del programa tiene un video donde te guío personalmente en la práctica somática.</p>
+        </div>
+        <div class="beneficio-card reveal reveal-delay-1">
+          <div class="beneficio-icon-wrapper">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+            </svg>
+          </div>
+          <h3 class="beneficio-title">Videos de contexto semanales</h3>
+          <p class="beneficio-description">Explicaciones que te ayudan a entender qué está pasando en tu sistema nervioso.</p>
+        </div>
+        <div class="beneficio-card reveal reveal-delay-2">
+          <div class="beneficio-icon-wrapper">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            </svg>
+          </div>
+          <h3 class="beneficio-title">Prácticas de regulación rápida</h3>
+          <p class="beneficio-description">Un banco de herramientas de 2 a 5 minutos para cuando el sistema nervioso se activa.</p>
+        </div>
+        <div class="beneficio-card reveal reveal-delay-1">
+          <div class="beneficio-icon-wrapper">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+            </svg>
+          </div>
+          <h3 class="beneficio-title">Kit para momentos difíciles</h3>
+          <p class="beneficio-description">Recursos específicos para los días en que el cuerpo está más activado de lo esperado.</p>
+        </div>
+        <div class="beneficio-card reveal reveal-delay-2">
+          <div class="beneficio-icon-wrapper">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+            </svg>
+          </div>
+          <h3 class="beneficio-title">Acompañamiento durante el proceso</h3>
+          <p class="beneficio-description">Recibirás acompañamiento escrito durante las 4 semanas para sostener lo que va surgiendo.</p>
+        </div>
+        <div class="beneficio-card reveal reveal-delay-3">
+          <div class="beneficio-icon-wrapper">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l5.447 2.724A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/>
+            </svg>
+          </div>
+          <h3 class="beneficio-title">Recorrido personalizado</h3>
+          <p class="beneficio-description">El resultado de tu test te orienta hacia dónde poner más atención &mdash; para que el programa sea tuyo.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRECIO -->
+    <section id="precio">
+      <div class="precio-header">
+        <p class="label precio-label reveal">INVERSION</p>
+        <h2 class="precio-title reveal reveal-delay-1">Elige como empezar</h2>
+      </div>
+      <div class="precio-card reveal reveal-delay-2">
+        <span class="precio-badge">Acceso completo</span>
+        <p class="precio-amount"><sup>$</sup>97</p>
+        <p class="precio-note">Pago único &middot; Acceso durante el programa</p>
+        <div class="precio-features">
+          <div class="precio-feature">
+            <span class="precio-check">&#10003;</span>
+            <span class="precio-feature-text">30 videos de práctica guiada</span>
+          </div>
+          <div class="precio-feature">
+            <span class="precio-check">&#10003;</span>
+            <span class="precio-feature-text">Videos de contexto semanales</span>
+          </div>
+          <div class="precio-feature">
+            <span class="precio-check">&#10003;</span>
+            <span class="precio-feature-text">Prácticas de regulación rápida</span>
+          </div>
+          <div class="precio-feature">
+            <span class="precio-check">&#10003;</span>
+            <span class="precio-feature-text">Kit para momentos difíciles</span>
+          </div>
+          <div class="precio-feature">
+            <span class="precio-check">&#10003;</span>
+            <span class="precio-feature-text">Acompañamiento escrito 4 semanas</span>
+          </div>
+          <div class="precio-feature">
+            <span class="precio-check">&#10003;</span>
+            <span class="precio-feature-text">Recorrido personalizado según tu test</span>
+          </div>
+        </div>
+        <button class="precio-btn">Quiero empezar ahora &rarr;</button>
+        <p class="precio-guarantee">Garantía de 7 días — si no es para ti, te devolvemos tu inversión</p>
+      </div>
+    </section>
+
+    <!-- SILVIA -->
+    <section id="silvia">
+      <div class="silvia-content">
+        <div class="silvia-photo reveal">
+          <img src="assets/658732641_18343173682242275_6551727147454489759_n.jpg" alt="Silvia Diazgranados, psicóloga clínica y creadora de Somaflow">
+        </div>
+        <div class="silvia-info">
+          <p class="label silvia-label reveal">CREADORA DEL PROGRAMA</p>
+          <h2 class="silvia-title reveal reveal-delay-1">Soy Silvia Diazgranados</h2>
+          <p class="silvia-text reveal reveal-delay-2">Psicóloga Clínica con especialización en trauma complejo y regulación del sistema nervioso. Durante más de una década he acompañado personas que ya entendían lo que necesitaban cambiar &mdash; pero cuyo cuerpo todavía no había aprendido cómo.</p>
+          <p class="silvia-text reveal reveal-delay-2">Somaflow nació de esa brecha. Del espacio entre el saber y el sentir. Es la destilación de lo que más funciona &mdash; sin teoría de más, sin pasos imposibles, sin promesas vacías.</p>
+          <p class="silvia-text reveal reveal-delay-3">Integro EMDR, IFS, psicología somática, ACT y DBT en un enfoque que va más allá de las palabras &mdash; porque hay cosas que el cuerpo sabe antes que la mente.</p>
+          <a href="#" class="silvia-link reveal reveal-delay-3">
+            Conocer más sobre mí &rarr;
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+      <div class="faq-content">
+        <p class="label faq-label reveal">PREGUNTAS FRECUENTES</p>
+        <h2 class="faq-title reveal reveal-delay-1">Lo que más me preguntan</h2>
+        <div class="faq-accordion reveal reveal-delay-2">
+          <div class="faq-item">
+            <div class="faq-question">
+              <span class="faq-question-text">¿Necesito experiencia previa en trabajo somático?</span>
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              <p class="faq-answer-content">No. Somaflow está diseñado para quien llega sin experiencia &mdash; y también para quien ya tiene algo de camino recorrido. Las prácticas son progresivas y se adaptan a donde estés.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">
+              <span class="faq-question-text">¿Cuánto tiempo necesito por día?</span>
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              <p class="faq-answer-content">Entre 10 y 20 minutos. Está diseñado para integrarse en la vida real &mdash; no para requerir condiciones perfectas ni tiempo que no tienes.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">
+              <span class="faq-question-text">Somaflow reemplaza la terapia?</span>
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              <p class="faq-answer-content">No. Somaflow es una herramienta de regulación poderosa, y muchas personas lo usan como complemento de su proceso terapéutico. Si estás en un momento de crisis o con trauma agudo, te recomiendo buscar acompañamiento profesional personalizado.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">
+              <span class="faq-question-text">¿Tengo acceso por tiempo limitado?</span>
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              <p class="faq-answer-content">No. Una vez que accedes, el programa es tuyo para siempre. Puedes repetirlo, volver a una fase específica o usarlo en diferentes momentos de tu vida.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">
+              <span class="faq-question-text">¿Qué pasa si no me siento bien en el proceso?</span>
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              <p class="faq-answer-content">Hay una garantía de 7 días. Si en la primera semana sientes que el programa no es para ti en este momento, te devolvemos tu inversión &mdash; sin preguntas.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section id="cta">
+      <div class="cta-content">
+        <h2 class="cta-title reveal">Tu sistema nervioso no necesita más esfuerzo. Necesita aprender un nuevo camino.</h2>
+        <p class="cta-text reveal reveal-delay-1">Somaflow es ese camino. Empieza cuando estés listo &mdash; y el momento es ahora.</p>
+        <a href="#precio" class="cta-btn reveal reveal-delay-2">Comenzar Somaflow &rarr;</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer id="footer">
+    <div class="footer-left">&copy; 2025 Silvia Diazgranados &middot; Todos los derechos reservados</div>
+    <a href="#" class="footer-right">&larr; Volver al sitio principal</a>
+  </footer>
+
+  <script>
+    // Scroll reveal observer
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // FAQ Accordion
+    document.querySelectorAll('.faq-question').forEach(question => {
+      question.addEventListener('click', () => {
+        const item = question.parentElement;
+        const answer = item.querySelector('.faq-answer');
+        const isOpen = item.classList.contains('open');
+
+        // Close all other items
+        document.querySelectorAll('.faq-item.open').forEach(openItem => {
+          if (openItem !== item) {
+            openItem.classList.remove('open');
+            openItem.querySelector('.faq-answer').style.maxHeight = '0';
+          }
+        });
+
+        // Toggle current item
+        if (isOpen) {
+          item.classList.remove('open');
+          answer.style.maxHeight = '0';
+        } else {
+          item.classList.add('open');
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+        }
+      });
+    });
+
+    // Test Data
+    const questions = [
+      {
+        category: 'ENERGIA',
+        question: '¿Cómo describirías tu nivel de energía en los últimos días?',
+        context: 'No hablamos de cansancio por falta de sueño &mdash; sino de esa sensación más profunda de cómo llegas a cada día.',
+        options: [
+          { text: 'Me siento vivo y presente, con energía que fluye naturalmente', score: 0 },
+          { text: 'Hay días buenos y días difíciles, pero en general puedo sostenerme', score: 1 },
+          { text: 'Estoy cansado aunque descanse &mdash; como si nada recargara la batería', score: 2 },
+          { text: 'El agotamiento es constante. A veces no sé de dónde saco fuerzas para seguir', score: 3 }
+        ]
+      },
+      {
+        category: 'RESPUESTA AL ESTRES',
+        question: '¿Cuando algo inesperado o difícil ocurre, cómo responde tu cuerpo?',
+        context: 'Observa la reacción física &mdash; no solo lo que piensas o decides hacer.',
+        options: [
+          { text: 'Me activo, lo manejo y puedo volver a la calma con relativa facilidad', score: 0 },
+          { text: 'Me cuesta un poco volver al equilibrio, pero eventualmente lo logro', score: 1 },
+          { text: 'Mi cuerpo se dispara fuerte &mdash; corazón acelerado, tensión, y me cuesta bajar', score: 2 },
+          { text: 'Me desconecto, me paralizo, o reacciono de una manera que luego no entiendo', score: 3 }
+        ]
+      },
+      {
+        category: 'PRESENCIA EN EL CUERPO',
+        question: '¿Qué tan consciente eres de las sensaciones de tu cuerpo a lo largo del día?',
+        context: 'La tensión en los hombros, el nudo en el pecho, la rigidez en la mandíbula. ¿Los notas?',
+        options: [
+          { text: 'Tengo bastante conciencia de mi cuerpo y puedo notar sus señales', score: 0 },
+          { text: 'A veces lo noto, pero me distraigo o lo ignoro bastante seguido', score: 1 },
+          { text: 'Me doy cuenta de las señales solo cuando ya son intensas o me generan dolor', score: 2 },
+          { text: 'Me siento desconectado de mi cuerpo &mdash; como si viviera más en mi cabeza', score: 3 }
+        ]
+      },
+      {
+        category: 'CALIDAD DEL DESCANSO',
+        question: '¿Cómo es tu relación con el descanso &mdash; dormir, parar, soltar?',
+        context: 'No solo la cantidad de horas, sino la calidad real de ese tiempo de pausa.',
+        options: [
+          { text: 'Puedo descansar genuinamente. Duermo y me recupero', score: 0 },
+          { text: 'El descanso es irregular &mdash; hay noches buenas y noches en que la mente no para', score: 1 },
+          { text: 'Me cuesta desconectarme para dormir, y me levanto sin sentirme descansado', score: 2 },
+          { text: 'El sueño es un territorio difícil &mdash; pesadillas, insomnio, o dormir demasiado sin recuperarme', score: 3 }
+        ]
+      },
+      {
+        category: 'REGULACIÓN EMOCIONAL',
+        question: '¿Cuando una emoción intensa aparece, qué pasa generalmente?',
+        context: 'Rabia, tristeza, miedo, vergüenza. Observa cómo entran y cómo (o si) salen.',
+        options: [
+          { text: 'Puedo sentirlas, procesarlas y soltarlas sin que me dominen', score: 0 },
+          { text: 'Las siento, a veces me desbordan un poco, pero encuentro la manera de gestionarlas', score: 1 },
+          { text: 'Las emociones me desbordan con frecuencia &mdash; o las contengo tanto que no sé qué siento', score: 2 },
+          { text: 'A menudo me asusto de mis propias reacciones, o siento que estoy entumecido por dentro', score: 3 }
+        ]
+      },
+      {
+        category: 'CONEXION CON LOS DEMAS',
+        question: '¿Cómo te sientes en tus relaciones más cercanas en este momento?',
+        context: 'Pienso en familia, pareja, amigos. ¿Puedes estar presente con ellos?',
+        options: [
+          { text: 'Me siento conectado y presente &mdash; las relaciones me nutren', score: 0 },
+          { text: 'La conexión es real pero a veces me cuesta estar genuinamente presente', score: 1 },
+          { text: 'Con frecuencia me siento solo incluso cuando estoy acompañado', score: 2 },
+          { text: 'Las relaciones me generan mucho estrés, o me he ido alejando de quienes me importan', score: 3 }
+        ]
+      },
+      {
+        category: 'PATRONES REPETITIVOS',
+        question: '¿Reconoces en tu vida patrones que quisieras cambiar, pero que siguen repitiéndose?',
+        context: 'Formas de reaccionar, de relacionarte, de tratarte a ti mismo. Cosas que ya entendiste pero que el cuerpo no ha cambiado.',
+        options: [
+          { text: 'He podido cambiar patrones que me hacían daño. No todo, pero hay movimiento', score: 0 },
+          { text: 'Hay algunos patrones difíciles, pero siento que tengo herramientas para trabajarlos', score: 1 },
+          { text: 'Veo claramente lo que quiero cambiar, pero algo me frena &mdash; como si supiera y no pudiera', score: 2 },
+          { text: 'Me siento atrapado en los mismos ciclos. Lo entiendo todo, y aun así nada cambia', score: 3 }
+        ]
+      },
+      {
+        category: 'SEGURIDAD INTERIOR',
+        question: '¿Con qué frecuencia sientes que el suelo bajo tus pies es firme &mdash; que estás bien, que estás a salvo?',
+        context: 'Más allá de las circunstancias externas &mdash; esa sensación interior de estar sostenido.',
+        options: [
+          { text: 'Bastante seguido. Tengo un sentido interno de seguridad que me acompaña', score: 0 },
+          { text: 'A veces sí, a veces no. Depende mucho de lo que esté pasando afuera', score: 1 },
+          { text: 'Es una sensación que conozco poco &mdash; me cuesta sentirme verdaderamente tranquilo', score: 2 },
+          { text: 'Rara vez o nunca. Hay una sensación de fondo de alerta, amenaza o vacío constante', score: 3 }
+        ]
+      }
+    ];
+
+    const results = [
+      {
+        range: [0, 6],
+        title: 'Tu sistema nervioso está bastante regulado',
+        description: 'Tienes una base sólida. Tu sistema nervioso puede activarse y volver a la calma con relativa facilidad. Lo que describes sugiere que cuentas con recursos internos reales &mdash; y que tienes cierta conciencia de lo que te mueve. Somaflow puede ser una herramienta para profundizar, consolidar y expandir esa capacidad.',
+        insights: [
+          { title: 'Tu fortaleza', text: 'Tienes una ventana de tolerancia amplia y recursos de regulación activos' },
+          { title: 'Hacia dónde crecer', text: 'Profundizar en la conexión somática para momentos de mayor exigencia' },
+          { title: 'Tu fase en Somaflow', text: 'Los días 23-30 de integración serán tu espacio más rico' }
+        ],
+        ctaTitle: 'Somaflow como práctica de profundización',
+        ctaText: 'Cuando el sistema nervioso ya tiene una base, el trabajo somático se convierte en algo diferente &mdash; no en salir de la crisis, sino en descubrir nuevos niveles de presencia y contacto.'
+      },
+      {
+        range: [7, 13],
+        title: 'Tu sistema nervioso está en alerta intermitente',
+        description: 'Hay equilibrio en tu vida &mdash; pero es un equilibrio frágil. Hay momentos de calma genuina y momentos en que el cuerpo se desborda o se desconecta. Probablemente ya identificas los patrones, pero el cuerpo todavía no ha aprendido a regularse de manera más estable y predecible. Ese es exactamente el espacio donde Somaflow trabaja.',
+        insights: [
+          { title: 'Lo que ocurre', text: 'Tu sistema nervioso alterna entre estados de activación y regulación sin una base estable' },
+          { title: 'Lo que necesitas', text: 'Construir un punto de base más seguro para que la regulación no dependa de las circunstancias' },
+          { title: 'Tu fase en Somaflow', text: 'Los días 1-14 serán los más transformadores para ti' }
+        ],
+        ctaTitle: 'Somaflow es para este exacto momento',
+        ctaText: 'El programa está diseñado para personas como tú: que ya tienen conciencia, que ya han empezado a mirar hacia adentro &mdash; y que necesitan un método para que el cuerpo aprenda lo que la mente ya sabe.'
+      },
+      {
+        range: [14, 19],
+        title: 'Tu sistema nervioso está en sobrecarga sostenida',
+        description: 'Lo que describes habla de un sistema nervioso que lleva mucho tiempo en modo supervivencia. El agotamiento, la desconexión, las reacciones que no entiendes &mdash; no son fallas tuyas. Son la forma que tiene tu sistema de protegerte cuando ha aprendido que el mundo no es completamente seguro. Somaflow está pensado exactamente para este lugar.',
+        insights: [
+          { title: 'Lo que está pasando', text: 'Tu sistema nervioso aprendió a funcionar en alerta como modo de protección' },
+          { title: 'Lo que es posible', text: 'El sistema nervioso puede aprender nuevos patrones &mdash; y el cuerpo tiene esa capacidad' },
+          { title: 'Un recordatorio', text: 'Considera también el acompañamiento de un profesional de salud mental durante el proceso' }
+        ],
+        ctaTitle: 'No tienes que seguir cargando esto solo',
+        ctaText: 'Somaflow te da un camino concreto, paso a paso, para comenzar a enseñarle a tu sistema nervioso que hay otra forma de estar. Empieza por los primeros días &mdash; sin prisa, sin exigencia.'
+      },
+      {
+        range: [20, 24],
+        title: 'Tu sistema nervioso necesita apoyo urgente',
+        description: 'Lo que describes habla de una carga muy pesada. El nivel de activación, desconexión o agotamiento que sientes merece atención real &mdash; y mereces recibirla. Somaflow puede ser parte del camino, pero lo primero que quiero decirte es esto: no estás solo, y lo que sientes tiene sentido dado lo que has vivido.',
+        insights: [
+          { title: 'Primero lo primero', text: 'Considera buscar acompañamiento terapéutico personalizado &mdash; esto que llevas merece ese espacio' },
+          { title: 'Somaflow como apoyo', text: 'Las prácticas de los primeros días pueden darte recursos de regulación para el día a día' },
+          { title: 'Lo que quiero que sepas', text: 'La capacidad de sanar está en ti. El sistema nervioso puede aprender &mdash; y lo hará, con el apoyo adecuado' }
+        ],
+        ctaTitle: 'Hay un camino hacia adelante',
+        ctaText: 'Si decides empezar Somaflow, hazlo sin prisa. Ve despacio. Los primeros días tienen todo lo que necesitas para empezar a sentir que hay suelo. Y si en este momento sientes que necesitas algo más, te invito a escribirme.',
+        ethicsNote: true
+      }
+    ];
+
+    // Test State
+    let currentQuestion = 0;
+    let answers = new Array(questions.length).fill(null);
+
+    const testContent = document.getElementById('test-content');
+    const progressFill = document.getElementById('progress-fill');
+    const progressCount = document.getElementById('progress-count');
+    const btnBack = document.getElementById('btn-back');
+    const btnNext = document.getElementById('btn-next');
+    const testNav = document.getElementById('test-nav');
+
+    function renderQuestion() {
+      const q = questions[currentQuestion];
+      const selectedAnswer = answers[currentQuestion];
+
+      testContent.innerHTML = `
+        <div class="question-container">
+          <p class="question-category">${q.category}</p>
+          <h3 class="question-text">${q.question}</h3>
+          <p class="question-context">${q.context}</p>
+          <div class="options-grid">
+            ${q.options.map((opt, i) => `
+              <div class="option-btn ${selectedAnswer === i ? 'selected' : ''}" data-index="${i}" role="button" tabindex="0">
+                <div class="option-radio"></div>
+                <span class="option-text">${opt.text}</span>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+
+      // Update progress
+      progressFill.style.width = `${((currentQuestion + 1) / questions.length) * 100}%`;
+      progressCount.textContent = `Pregunta ${currentQuestion + 1} de ${questions.length}`;
+
+      // Update buttons
+      btnBack.disabled = currentQuestion === 0;
+      btnNext.disabled = answers[currentQuestion] === null;
+      btnNext.textContent = currentQuestion === questions.length - 1 ? 'Ver mi resultado →' : 'Siguiente →';
+
+      // Add event listeners to options
+      document.querySelectorAll('.option-btn').forEach(btn => {
+        btn.addEventListener('click', () => selectOption(parseInt(btn.dataset.index)));
+        btn.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            selectOption(parseInt(btn.dataset.index));
+          }
+        });
+      });
+    }
+
+    function selectOption(index) {
+      answers[currentQuestion] = index;
+      renderQuestion();
+    }
+
+    function calculateScore() {
+      return answers.reduce((total, answerIndex, qIndex) => {
+        return total + questions[qIndex].options[answerIndex].score;
+      }, 0);
+    }
+
+    function getResult(score) {
+      return results.find(r => score >= r.range[0] && score <= r.range[1]);
+    }
+
+    function renderResult() {
+      const score = calculateScore();
+      const result = getResult(score);
+      const circumference = 2 * Math.PI * 52;
+      const progress = (score / 24) * circumference;
+
+      testNav.style.display = 'none';
+      progressFill.style.width = '100%';
+      progressCount.textContent = 'Resultado';
+
+      testContent.innerHTML = `
+        <div class="result-container">
+          <div class="result-ring">
+            <svg viewBox="0 0 120 120">
+              <circle class="result-ring-bg" cx="60" cy="60" r="52"/>
+              <circle class="result-ring-progress" cx="60" cy="60" r="52"
+                stroke-dasharray="${circumference}"
+                stroke-dashoffset="${circumference - progress}"/>
+            </svg>
+            <div class="result-score">${score}/24</div>
+          </div>
+          <h3 class="result-title">${result.title}</h3>
+          <p class="result-description">${result.description}</p>
+          <div class="insights-grid">
+            ${result.insights.map(insight => `
+              <div class="insight-card">
+                <svg class="insight-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                </svg>
+                <p class="insight-title">${insight.title}</p>
+                <p class="insight-text">${insight.text}</p>
+              </div>
+            `).join('')}
+          </div>
+          <div class="result-cta-box">
+            <h4 class="result-cta-title">${result.ctaTitle}</h4>
+            <p class="result-cta-text">${result.ctaText}</p>
+            <a href="#precio" class="result-cta-btn">Comenzar Somaflow →</a>
+            <p class="result-guarantee">Garantía de 7 días si no es para ti</p>
+          </div>
+          ${result.ethicsNote ? `
+            <div class="ethics-note">
+              <p>Este test no es un diagnóstico clínico. Si estás en un momento de crisis, te recomiendo buscar acompañamiento profesional.</p>
+            </div>
+          ` : ''}
+          <a class="result-retry" id="retry-test">Hacer el test de nuevo</a>
+        </div>
+      `;
+
+      document.getElementById('retry-test').addEventListener('click', resetTest);
+
+      // Scroll to result
+      document.getElementById('test').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function resetTest() {
+      currentQuestion = 0;
+      answers = new Array(questions.length).fill(null);
+      testNav.style.display = 'flex';
+      renderQuestion();
+    }
+
+    btnBack.addEventListener('click', () => {
+      if (currentQuestion > 0) {
+        currentQuestion--;
+        renderQuestion();
+      }
+    });
+
+    btnNext.addEventListener('click', () => {
+      if (currentQuestion < questions.length - 1) {
+        currentQuestion++;
+        renderQuestion();
+      } else {
+        renderResult();
+      }
+    });
+
+    // Initialize test
+    renderQuestion();
+
+    // UnicornStudio — activar al hover del CTA
+    (function () {
+      const wrapper = document.getElementById('hero-us-wrapper');
+      const cta = document.querySelector('.hero-cta a');
+      if (!wrapper || !cta) return;
+
+      cta.addEventListener('mouseenter', function () {
+        wrapper.style.transition = 'opacity 0.9s ease 0.15s';
+        wrapper.style.opacity = '1';
+      });
+
+      cta.addEventListener('mouseleave', function () {
+        wrapper.style.transition = 'opacity 1.8s ease';
+        wrapper.style.opacity = '0';
+      });
+    })();
+  </script>
+
+  <script>
+    (function () {
+      function ensureInit() {
+        if (window.UnicornStudio && window.UnicornStudio.init) {
+          if (!window.UnicornStudio.isInitialized) {
+            window.UnicornStudio.init();
+            window.UnicornStudio.isInitialized = true;
+          }
+          return true;
+        }
+        return false;
+      }
+      if (ensureInit()) return;
+      if (!window.UnicornStudio) window.UnicornStudio = { isInitialized: false };
+      var existing = document.querySelector('script[data-us-loader="1"]');
+      if (existing) {
+        var tries = 0;
+        var t = setInterval(function () {
+          tries++;
+          if (ensureInit() || tries > 40) clearInterval(t);
+        }, 100);
+        return;
+      }
+      var s = document.createElement("script");
+      s.setAttribute("data-us-loader", "1");
+      s.src = "https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v2.1.0-1/dist/unicornStudio.umd.js";
+      s.onload = function () { ensureInit(); };
+      (document.head || document.body).appendChild(s);
+    })();
+  </script>
+</body>
+</html>
