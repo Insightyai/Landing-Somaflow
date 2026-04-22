@@ -193,7 +193,7 @@
       border-radius: 50%;
       filter: blur(80px);
       pointer-events: none;
-      z-index: 0;
+      z-index: 2;
       animation: blobFloat 12s ease-in-out infinite alternate;
     }
     @keyframes blobFloat {
@@ -301,11 +301,28 @@
       justify-content: center;
     }
 
+    .hero-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+
+    .hero-video-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(42, 58, 52, 0.62);
+      z-index: 1;
+    }
+
     .hero-content {
       max-width: 760px;
       margin: 0 auto;
       position: relative;
-      z-index: 2;
+      z-index: 3;
     }
 
     .hero-pill {
@@ -1097,7 +1114,7 @@
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
       font-size: 80px;
-      color: rgba(95, 164, 132, 0.15);
+      color: rgba(255, 255, 255, 0.15);
       line-height: 1;
       margin-bottom: -20px;
     }
@@ -1123,7 +1140,7 @@
       font-family: 'Jost', sans-serif;
       font-weight: 300;
       font-size: 15px;
-      color: var(--musgo);
+      color: rgba(245, 242, 234, 0.75);
     }
 
     @media (max-width: 900px) {
@@ -1720,7 +1737,7 @@
     <div class="nav-left">
       <span>&larr; Silvia Diazgranados</span>
     </div>
-    <div class="nav-center">Somaflow</div>
+    <div class="nav-center"><img src="assets/Logo Soma.png" alt="Somaflow" style="height: 60px; width: auto; display: block;"></div>
     <div class="nav-right">
       <a href="#precio" class="btn-pill">Empezar &rarr;</a>
     </div>
@@ -1729,11 +1746,15 @@
   <main>
     <!-- HERO -->
     <section id="hero">
+      <video class="hero-video" autoplay muted loop playsinline>
+        <source src="assets/kling_20260422_作品_Create_a_h_1718_0.mp4" type="video/mp4">
+      </video>
+      <div class="hero-video-overlay"></div>
       <!-- Blobs decorativos -->
       <div class="hero-blob" style="width:400px;height:300px;top:10%;left:5%;background:rgba(95,164,132,0.08);animation-delay:0s;"></div>
       <div class="hero-blob" style="width:300px;height:400px;top:30%;right:8%;background:rgba(65,100,100,0.10);animation-delay:-4s;"></div>
       <div class="hero-blob" style="width:250px;height:250px;bottom:15%;left:40%;background:rgba(185,193,143,0.06);animation-delay:-8s;"></div>
-      <div id="hero-us-wrapper" style="position:absolute;top:-5%;left:-8%;right:-8%;bottom:-30%;z-index:0;pointer-events:none;opacity:0.2;transition:opacity 0.8s ease;">
+      <div id="hero-us-wrapper" style="position:absolute;top:-5%;left:-8%;right:-8%;bottom:-30%;z-index:2;pointer-events:none;opacity:0.2;transition:opacity 0.8s ease;">
         <div style="position:absolute;inset:0;opacity:0.75;mix-blend-mode:screen;">
           <div data-us-project="0bj47BRhqOMrgLlpMNC0" data-us-dpi="1.5" data-us-fps="60" data-us-lazyload="false"
             data-us-production="true" style="position:absolute;inset:0;width:100%;height:100%;filter:hue-rotate(-48deg) saturate(1.4) brightness(0.8);"></div>
@@ -1773,29 +1794,35 @@
         <img src="assets/ChatGPT Image 21 abr 2026, 16_01_56.png" alt="Personas en distintos estados de regulación nerviosa" class="para-quien-img reveal">
         <div class="sintomas-grid">
           <div class="sintoma-card reveal reveal-delay-1">
-            <svg class="sintoma-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M12 6v6l4 2"/>
-              <circle cx="12" cy="12" r="10"/>
+            <!-- Pulso nervioso: onda ECG orgánica -->
+            <svg class="sintoma-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 16 L7 16 L9 9 L12 23 L15 13 L17 18 L19 16 L29 16"/>
             </svg>
             <p class="sintoma-title">Ansiedad que no cede aunque no pase nada concreto</p>
           </div>
           <div class="sintoma-card reveal reveal-delay-2">
-            <svg class="sintoma-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M18.364 5.636a9 9 0 11-12.728 0"/>
-              <path d="M12 9v4"/>
-              <circle cx="12" cy="17" r="1"/>
+            <!-- Luna cansada: no descansa aunque duerma -->
+            <svg class="sintoma-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 20C19 24 13 25 9 22C5 19 5 12 9 8C6 13 7 19 11 22C15 25 20 23 22 20Z"/>
+              <path d="M25 9 L26 7"/>
+              <path d="M28 13 L30 13"/>
+              <path d="M26 17 L28 18"/>
             </svg>
             <p class="sintoma-title">Agotamiento que el descanso no resuelve</p>
           </div>
           <div class="sintoma-card reveal reveal-delay-2">
-            <svg class="sintoma-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            <!-- Llama orgánica: reacción que se enciende -->
+            <svg class="sintoma-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 28C11 28 8 24 9 20C10 17 12 16 12 13C12 10 11 7 11 7C14 9 15 12 15 12C16 9 18 6 20 4C20 8 19 11 20 14C21 17 23 18 23 21C23 25 20 28 16 28Z"/>
+              <path d="M14 22C14 22 13 20 15 19C17 18 17 21 16 22"/>
             </svg>
             <p class="sintoma-title">Reacciones intensas que luego no entiendes</p>
           </div>
           <div class="sintoma-card reveal reveal-delay-3">
-            <svg class="sintoma-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+            <!-- Espiral de bucle: patrón que se repite -->
+            <svg class="sintoma-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 16C16 14 18 13 20 14.5C22 16.5 21 21 17 22C12.5 23 8.5 20 8.5 15.5C8.5 10.5 12.5 7 17.5 7C23 7 27 11 27 16.5C27 22 22.5 27 16 27C9.5 27 5 22 5 16L5 13"/>
+              <path d="M3 11 L5 13 L7 11"/>
             </svg>
             <p class="sintoma-title">Sensación de estar atrapado en el mismo patrón</p>
           </div>
@@ -1862,8 +1889,12 @@
           <div class="pilares-list">
             <div class="pilar-item">
               <div class="pilar-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                  <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                <!-- Nervio vago: tallo con ramas orgánicas -->
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 21 C11 17 13 14 12 11 C11 8 13 5 12 3"/>
+                  <path d="M12 8 C12 8 9 7 7 5"/>
+                  <path d="M12 12 C12 12 15 11 17 9"/>
+                  <path d="M12 16 C12 16 9 17 7 19"/>
                 </svg>
               </div>
               <div class="pilar-content">
@@ -1873,8 +1904,10 @@
             </div>
             <div class="pilar-item">
               <div class="pilar-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                  <path d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                <!-- Play orgánico: círculo imperfecto con triángulo redondeado -->
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22 C6.5 22 3 18 3 12 C3 6 6.5 2 12 2 C17.5 2 21 6 21 12 C21 18 17.5 22 12 22Z"/>
+                  <path d="M10 8.5 L10 15.5 L17 12 Z"/>
                 </svg>
               </div>
               <div class="pilar-content">
@@ -1884,8 +1917,10 @@
             </div>
             <div class="pilar-item">
               <div class="pilar-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                  <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                <!-- Hoja creciendo: sin esfuerzo, orgánico -->
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 21 L12 13"/>
+                  <path d="M12 13 C12 13 7 12 6 8 C5 4 8 2 11 3 C11 3 10 7 12 9 C14 7 13 3 13 3 C16 2 19 4 18 8 C17 12 12 13 12 13Z"/>
                 </svg>
               </div>
               <div class="pilar-content">
@@ -1895,8 +1930,9 @@
             </div>
             <div class="pilar-item">
               <div class="pilar-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                  <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                <!-- Reloj de arena orgánico -->
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M8 3 L16 3 C15.5 3 14 7 12 9 C10 11 9 12 9 12 C9 12 10 13 12 15 C14 17 15.5 21 16 21 L8 21 C8.5 21 10 17 12 15 C14 13 15 12 15 12 C15 12 14 11 12 9 C10 7 8.5 3 8 3Z"/>
                 </svg>
               </div>
               <div class="pilar-content">
@@ -1970,8 +2006,10 @@
       <div class="beneficios-grid">
         <div class="beneficio-card reveal">
           <div class="beneficio-icon-wrapper">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+            <!-- Play orgánico -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22 C6.5 22 3 18 3 12 C3 6 6.5 2 12 2 C17.5 2 21 6 21 12 C21 18 17.5 22 12 22Z"/>
+              <path d="M10 8.5 L10 15.5 L17 12 Z"/>
             </svg>
           </div>
           <h3 class="beneficio-title">30 videos de práctica</h3>
@@ -1979,8 +2017,11 @@
         </div>
         <div class="beneficio-card reveal reveal-delay-1">
           <div class="beneficio-icon-wrapper">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+            <!-- Bombilla orgánica: comprensión -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 3 C9 3 7 5.5 7 8 C7 10.5 8.5 12.5 10 14 L10 17 L14 17 L14 14 C15.5 12.5 17 10.5 17 8 C17 5.5 15 3 12 3Z"/>
+              <path d="M10 17 L10 19 L14 19 L14 17"/>
+              <path d="M11 19 L11 21 L13 21 L13 19"/>
             </svg>
           </div>
           <h3 class="beneficio-title">Videos de contexto semanales</h3>
@@ -1988,8 +2029,11 @@
         </div>
         <div class="beneficio-card reveal reveal-delay-2">
           <div class="beneficio-icon-wrapper">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            <!-- Ola de respiración rápida -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2 12 Q4 8 6 12 Q8 16 10 12 Q12 8 14 12 Q16 16 18 12 Q20 8 22 12"/>
+              <path d="M2 17 Q4 15 6 17 Q8 19 10 17"/>
+              <path d="M14 7 Q16 5 18 7 Q20 9 22 7"/>
             </svg>
           </div>
           <h3 class="beneficio-title">Prácticas de regulación rápida</h3>
@@ -1997,8 +2041,13 @@
         </div>
         <div class="beneficio-card reveal reveal-delay-1">
           <div class="beneficio-icon-wrapper">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+            <!-- Ancla orgánica: sostén en momentos difíciles -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 3 C10.5 3 9.5 4 9.5 5.5 C9.5 7 10.5 8 12 8 C13.5 8 14.5 7 14.5 5.5 C14.5 4 13.5 3 12 3Z"/>
+              <path d="M12 8 L12 21"/>
+              <path d="M5 13 C5 18 8 21 12 21 C16 21 19 18 19 13"/>
+              <path d="M5 13 L2 13"/>
+              <path d="M19 13 L22 13"/>
             </svg>
           </div>
           <h3 class="beneficio-title">Kit para momentos difíciles</h3>
@@ -2006,8 +2055,9 @@
         </div>
         <div class="beneficio-card reveal reveal-delay-2">
           <div class="beneficio-icon-wrapper">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+            <!-- Dos manos sosteniendo -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 14 C4 14 3 12 4 10 C5 8 7 8 8 9 L9 10 L9 7 C9 6 10 5 11 6 L11 5 C11 4 12 3 13 4 L13 5 C14 4 15 5 15 6 L15 9 C16 8 18 8 19 10 C20 12 19 14 19 14 L16 18 C15 19 13 20 12 20 C11 20 9 19 8 18 Z"/>
             </svg>
           </div>
           <h3 class="beneficio-title">Acompañamiento durante el proceso</h3>
@@ -2015,8 +2065,11 @@
         </div>
         <div class="beneficio-card reveal reveal-delay-3">
           <div class="beneficio-icon-wrapper">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l5.447 2.724A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/>
+            <!-- Camino sinuoso con punto de llegada -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 20 C4 20 7 17 8 14 C9 11 7 9 9 7 C11 5 14 6 15 9 C16 12 14 14 16 16 C18 18 20 17 21 15"/>
+              <circle cx="4" cy="20" r="1.5" fill="currentColor" stroke="none"/>
+              <circle cx="21" cy="15" r="1.5" fill="currentColor" stroke="none"/>
             </svg>
           </div>
           <h3 class="beneficio-title">Recorrido personalizado</h3>
@@ -2180,7 +2233,7 @@
 
   <!-- FOOTER -->
   <footer id="footer">
-    <div class="footer-left">&copy; 2025 Silvia Diazgranados &middot; Todos los derechos reservados</div>
+    <div class="footer-left">&copy; 2026 Silvia Diazgranados &middot; Todos los derechos reservados</div>
     <a href="#" class="footer-right">&larr; Volver al sitio principal</a>
   </footer>
 
