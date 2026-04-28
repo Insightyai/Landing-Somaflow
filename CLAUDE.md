@@ -12,9 +12,9 @@ Landing page estática para el programa Somaflow de Silvia Diazgranados.
 
 ## Git
 
-- Repositorio: `https://github.com/ScaInsighty/somaflow.git`
+- Repositorio: `https://github.com/Insightyai/Landing-Somaflow.git`
 - Branch: `main`
-- Deploy: GitHub Pages → `https://scainsighty.github.io/somaflow/somaflow-landing.html`
+- Deploy: GitHub Pages → `https://insightyai.github.io/Landing-Somaflow/somaflow-landing.html`
 - **Solo commitear** `somaflow-landing.html` y archivos dentro de `assets/` — el repo tiene otros archivos del proyecto app que no pertenecen aquí
 
 ## Reglas de trabajo
